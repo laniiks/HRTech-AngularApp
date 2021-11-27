@@ -2,8 +2,9 @@
   "name": "HRTech",
   "version": "0.0.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -13,8 +14,10 @@
   "dependencies": {
     "@agm/core": "^1.1.0",
     "@angular/animations": "~9.0.7",
+    "@angular/cli": "^9.1.8",
     "@angular/common": "~9.0.7",
     "@angular/compiler": "~9.0.7",
+    "@angular/compiler-cli": "~9.0.7",
     "@angular/core": "~9.0.7",
     "@angular/forms": "~9.0.7",
     "@angular/localize": "^9.0.7",
@@ -25,12 +28,19 @@
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "bootstrap": "^4.4.1",
     "bootswatch": "^4.4.1",
+    "express": "^4.17.1",
     "file-saver": "^2.0.5",
     "guid-typescript": "^1.0.9",
     "jquery": "^3.4.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "typescript": "~3.7.5",
     "zone.js": "~0.10.2"
+  },
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.9",
