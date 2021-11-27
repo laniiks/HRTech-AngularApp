@@ -1,0 +1,67 @@
+<section class="intro intro__marg">
+    <div class="headContainer container" style="margin-top: 12px; display: flex;">
+        <div class="companys border">
+            <div class="h24">Все компании</div>
+            <div class="search border mt-2" style="padding: 4px; height: 44px;">
+                <input type="text" name="" id="" style="width: 100%; height: 100%; border: none;" placeholder="Поиск">
+                <img src="../../../assets/image/iconSearch.png" alt="">
+            </div>
+            <div class="allCompany">
+                <ng-container *ngIf="companys$ | async as companys;">
+                    <div class="scroll-container">
+                        <div *ngFor="let company of companys">
+                            <div class="scroll-page" (click)="getCompany(company.id)">
+                                <div class="company border"
+                                    style="margin-top: 18px; display: flex; align-items: center;">
+                                    <ng-container *ngIf="company.image != null; else photo">
+                                        <img src="data:image/png;base64,{{company.image.content}}" alt=""
+                                            style="height: 50px; width: 75px; border-radius: 12px;">
+                                    </ng-container>
+                                    <p class="ml-2">
+                                        <b>{{company.companyName}}</b>
+                                        <img *ngIf="company.state == 20" src="../../../assets/image/Shield.png" alt="">
+                                    </p>
+                                    <img src="../../../assets/image/iconEdit.png" alt="" class="edit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="contentCompany ml-3">
+            <div>
+                <div class="h24 border" style="padding: 12px; min-height: 96px;position: relative;">
+                    Без понятия Абсолютно
+                    <div class="button1 h18 " (click)="type='ListCompany'"
+                        style="width: 334px; color: rgba(50, 168, 205, 1); position: absolute; right: 12px !important; bottom: 12px;">
+                        <img src="../../../assets/image/iconListCompany.png" alt="">
+                        Список заявок компаний
+                        <span *ngIf="countNewCompany > 0 && countNewCompany < 99; else count" class="translate-middle badge rounded-pill bg-danger" style="position: absolute;top: -5px;right: -5px;border: 1px solid;border-radius: 50%;padding-right: 5px;padding-left: 5px;color: #fff;background-color: #EB2828;font-size: 14px;">
+                            {{countNewCompany}}
+                        </span>
+                        <ng-template #count>
+                            <span class="translate-middle badge rounded-pill bg-danger" style="position: absolute;top: -5px;right: -5px;border: 1px solid;border-radius: 50%;padding-right: 5px;padding-left: 5px;color: #fff;background-color: #EB2828;font-size: 14px;">
+                                99+
+                            </span>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="descriptionCompany border mt-3" style="height: 750px;">
+                <div [ngSwitch]="type">
+                    <ng-container *ngIf="company$ as company;">
+                        <app-company [company]="company" *ngIf="type==='GetCompanyId'"></app-company>
+                    </ng-container>
+                    <app-new-company *ngIf="type==='ListCompany'"></app-new-company>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #photo>
+    <img src="../../../assets/image/no-user-image-icon-27.png" alt=""
+        style="height: 50px; width: 75px; border-radius: 12px;">
+</ng-template>
