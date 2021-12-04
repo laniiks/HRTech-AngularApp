@@ -15,7 +15,8 @@ export class CompanyService {
   private ROOT_URL_FILE = `api/UploadFile`
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8;'
+      'Content-Type': 'application/json; charset=utf-8;',
+      'Access-Control-Allow-Origin' : '*'
     })
   };
 

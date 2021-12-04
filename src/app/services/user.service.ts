@@ -13,7 +13,8 @@ export class UserService implements OnInit{
   private readonly ROOT_USER_URL = `api/User`;
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8;'
+      'Content-Type': 'application/json; charset=utf-8;',
+      'Access-Control-Allow-Origin' : '*'
     })
   };
 

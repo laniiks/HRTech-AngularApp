@@ -12,7 +12,8 @@ export class GradeService {
   private ROOT_URL = `api/Grade`;
   ttpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8;'
+        'Content-Type': 'application/json; charset=utf-8;',
+        'Access-Control-Allow-Origin' : '*'
     })
 };
   constructor(private http: HttpClient) { }
